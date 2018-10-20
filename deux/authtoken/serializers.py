@@ -5,6 +5,7 @@ from rest_framework import serializers
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 
 from deux import strings
+from deux.app_settings import mfa_settings
 from deux.services import MultiFactorChallenge, verify_mfa_code
 
 
@@ -47,7 +48,8 @@ class MFAAuthTokenSerializer(AuthTokenSerializer):
         user = attrs["user"]
         assert user is not None, "User should exist after super call."
 
-        mfa = getattr(user, "multi_factor_auth", None)
+        multi_factor_model_name = mfa_settings.MFA_MODEL._meta.model_name
+        mfa = getattr(user, "{}_multi_factor_auth".format(multi_factor_model_name), None)
 
         if mfa and mfa.enabled:
             mfa_code = attrs.get("mfa_code")
