@@ -41,6 +41,7 @@ class MultiFactorAuthSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = mfa_settings.MFA_MODEL
+        fields = '__all__'
 
 
 class _BaseChallengeRequestSerializer(MultiFactorAuthSerializer):
