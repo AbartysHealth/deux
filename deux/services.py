@@ -1,8 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
-import six
 from uuid import uuid4
 
+import six
 from django.utils.crypto import constant_time_compare
 from django_otp.oath import totp
 
