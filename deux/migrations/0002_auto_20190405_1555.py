@@ -16,6 +16,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='multifactorauth',
             name='user',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, related_name='multifactorauth_multi_factor_auth', serialize=False, to=settings.AUTH_USER_MODEL),
+            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, related_name='%(class)s_multi_factor_auth', serialize=False, to=settings.AUTH_USER_MODEL),
         ),
     ]
